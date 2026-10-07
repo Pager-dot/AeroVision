@@ -25,6 +25,8 @@ def load_artifact(filename):
 
 rf_model = load_artifact('rf_model.pkl')
 xgb_model = load_artifact('xgb_model.pkl')
+gb_model = load_artifact('gb_model.pkl')
+et_model = load_artifact('et_model.pkl')
 scaler = load_artifact('scaler.pkl')
 metrics = load_artifact('model_metrics.pkl')
 feat_imp = load_artifact('feature_importance.pkl')
@@ -61,15 +63,19 @@ def predict():
         input_array = np.array(values).reshape(1, -1)
         input_scaled = scaler.transform(input_array)
 
-        # Predict with both models
+        # Predict with all models
         xgb_aqi = round(float(xgb_model.predict(input_scaled)[0]), 1)
         rf_aqi = round(float(rf_model.predict(input_scaled)[0]), 1)
+        gb_aqi = round(float(gb_model.predict(input_scaled)[0]), 1)
+        et_aqi = round(float(et_model.predict(input_scaled)[0]), 1)
 
         bucket, color = get_aqi_bucket(xgb_aqi)
 
         result = {
             'aqi': xgb_aqi,
             'rf_aqi': rf_aqi,
+            'gb_aqi': gb_aqi,
+            'et_aqi': et_aqi,
             'bucket': bucket,
             'color': color,
             'inputs': dict(zip(FEATURE_COLUMNS, values)),
