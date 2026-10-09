@@ -7,3 +7,6 @@ models/*.pkl
 
 # Generated chart images (regenerate with: python train_model.py)
 static/images/*.png
+
+# Secrets
+.env
