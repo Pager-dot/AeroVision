@@ -8,3 +8,4 @@ seaborn
 scipy
 requests
 python-dotenv
+gunicorn
