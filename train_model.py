@@ -83,7 +83,9 @@ def train():
 
     # 8. Train models
     print("\n[5/8] Training Random Forest...")
-    rf_model = RandomForestRegressor(n_estimators=200, random_state=42)
+    rf_model = RandomForestRegressor(
+        n_estimators=200, max_depth=12, min_samples_leaf=5, random_state=42
+    )
     rf_model.fit(X_train, y_train)
     rf_preds = rf_model.predict(X_test)
 
@@ -98,7 +100,9 @@ def train():
     gb_preds = gb_model.predict(X_test)
 
     print("[5/8] Training Extra Trees...")
-    et_model = ExtraTreesRegressor(n_estimators=200, random_state=42)
+    et_model = ExtraTreesRegressor(
+        n_estimators=200, max_depth=12, min_samples_leaf=5, random_state=42
+    )
     et_model.fit(X_train, y_train)
     et_preds = et_model.predict(X_test)
 
