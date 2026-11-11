@@ -24,8 +24,8 @@ function createLineChart(canvasId, labels, data, title, options = {}) {
             datasets: [{
                 label: 'Average AQI',
                 data: data,
-                borderColor: '#0d6efd',
-                backgroundColor: 'rgba(13,110,253,0.1)',
+                borderColor: '#0369a1',
+                backgroundColor: 'rgba(3,105,161,0.1)',
                 tension: 0.3,
                 fill: true
             }]
